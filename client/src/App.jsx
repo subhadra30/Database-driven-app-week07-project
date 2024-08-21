@@ -14,7 +14,9 @@ export default function App() {
 
   async function getMessages() {
     //call api
-    const response = await fetch("http://localhost:8080/messages");
+    const response = await fetch(
+      "https://database-driven-app-week07-project.onrender.com/messages"
+    );
     console.log(response);
     //extract data from response
     const messages = await response.json();
@@ -38,13 +40,16 @@ export default function App() {
     event.preventDefault();
     console.log("Form is submitted");
     console.log(form);
-    await fetch("http://localhost:8080/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    });
+    await fetch(
+      "https://database-driven-app-week07-project.onrender.com/messages",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      }
+    );
     setForm({
       username: "",
       message: "",
